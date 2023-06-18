@@ -27,7 +27,7 @@ export default function Signup() {
   } = useForm<CreateUserFormData>({
     resolver: zodResolver(createUserformSchema),
   })
-  async function createUser(data: any) {
+  function createUser(data: any) {
     setIsLoading(true)
     api
       .post('/signup', data)
