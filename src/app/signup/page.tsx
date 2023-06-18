@@ -2,50 +2,101 @@
 import { api } from '@/lib/api'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
+import Loading from '../components/Loaging'
+import toast from '../components/Toast'
+
+const createUserformSchema = z.object({
+  name: z.string().nonempty('Nome obrigatório'),
+  email: z.string().nonempty('E-mail obrigatório').email('E-mail inválido'),
+  password: z.string().min(4, 'A senha deve ter pelo menos 4 caracteres'),
+})
+
+type CreateUserFormData = z.infer<typeof createUserformSchema>
 
 export default function Signup() {
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  async function handleSignup(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-
-    try {
-      if (formData.get('password') === formData.get('confirmPassword')) {
-        await api.post('/signup', {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          password: formData.get('password'),
-        })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateUserFormData>({
+    resolver: zodResolver(createUserformSchema),
+  })
+  async function createUser(data: any) {
+    setIsLoading(true)
+    api
+      .post('/signup', data)
+      .then(() => {
+        setIsLoading(false)
         router.push('/auth')
-      }
-    } catch (err) {
-      console.log(err)
-    }
+      })
+      .catch((error) => {
+        setIsLoading(false)
+        toast.error(`${error.response.data.message}`)
+      })
   }
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <h1 className="pb-2 text-xl">Sign Up</h1>
       <form
-        onSubmit={handleSignup}
-        className="flex flex-col gap-3 text-gray-800"
+        onSubmit={handleSubmit(createUser)}
+        className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm"
       >
-        <input
-          type="text"
-          placeholder="Nome"
-          name="name"
-          className="placeholder-gray-300"
-        />
-        <input type="email" placeholder="E-mail" name="email" />
-        <input type="password" placeholder="Senha" name="password" />
-        <input
-          type="password"
-          placeholder="Repetir Senha"
-          name="confirmPassword"
-        />
-        <button type="submit" className="border py-2 text-gray-100">
-          Sign Up
-        </button>
+        <div>
+          <input
+            type="text"
+            placeholder="Nome"
+            className="relative block w-full placeholder-gray-300"
+            {...register('name')}
+          />
+          {errors.name && (
+            <span className="absolute text-sm text-red-300">
+              {errors.name.message}
+            </span>
+          )}
+        </div>
+
+        <div>
+          <input
+            type="email"
+            placeholder="E-mail"
+            {...register('email')}
+            className="relative block w-full"
+          />
+          {errors.email && (
+            <span className="absolute text-sm text-red-300">
+              {errors.email.message}{' '}
+            </span>
+          )}
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Senha"
+            {...register('password')}
+            className="relative block w-full"
+          />
+          {errors.password && (
+            <span className="absolute text-sm text-red-300">
+              {errors.password.message}{' '}
+            </span>
+          )}
+        </div>
+        {!isLoading ? (
+          <button type="submit" className="h-10 border text-gray-100">
+            Sign Up
+          </button>
+        ) : (
+          <div className="h-10 border text-center text-gray-100">
+            <Loading />
+          </div>
+        )}
+
         <Link href="/auth" className="text-gray-300 underline">
           Login
         </Link>
