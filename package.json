@@ -13,6 +13,7 @@
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "awesome-toast-component": "^2.0.6",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "eslint": "8.40.0",
