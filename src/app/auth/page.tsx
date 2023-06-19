@@ -85,10 +85,15 @@ export default function Auth() {
             <Loading />
           </div>
         )}
+        <div>
+          <Link href="/forgot-password" className="text-gray-300 underline">
+            Esqueci minha senha
+          </Link>
 
-        <Link href="/signup" className="text-gray-300 underline">
-          Criar conta
-        </Link>
+          <Link href="/signup" className="float-right text-gray-300 underline">
+            Criar conta
+          </Link>
+        </div>
       </form>
     </div>
   )
