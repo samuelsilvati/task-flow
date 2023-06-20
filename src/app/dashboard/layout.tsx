@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { ReactNode } from 'react'
 import Image from 'next/image'
 import Logo from '../../assets/logo.svg'
+import { Profile } from '../components/Profile'
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const token = cookies().has('token')
@@ -16,6 +17,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
             <Image src={Logo} alt="logo" />
             <div className="flex gap-3">
+              <Profile />
               <Link href="/logout" className="text-gray-500 underline">
                 Sair
               </Link>
