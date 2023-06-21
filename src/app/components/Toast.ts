@@ -5,6 +5,7 @@ export default class toast {
   static success(message: string, position?: string) {
     new Toast(message, {
       ...(position && { position }),
+      position: 'top',
       style: {
         container: [['background-color', 'green']],
         message: [['color', '#eee']],
@@ -16,6 +17,7 @@ export default class toast {
   static error(message: string, position?: string) {
     new Toast(message, {
       ...(position && { position }),
+      position: 'top',
       style: {
         container: [['background-color', 'red']],
         message: [['color', '#eee']],
