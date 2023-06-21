@@ -12,7 +12,7 @@ export default function Home() {
             <Link href="/signup" className="text-gray-500 underline">
               Cria conta
             </Link>
-            <Link href="/auth" className="text-gray-500 underline">
+            <Link href="/signin" className="text-gray-500 underline">
               Login
             </Link>
           </div>

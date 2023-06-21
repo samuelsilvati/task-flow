@@ -35,7 +35,7 @@ export default function ForgotPassword() {
         toast.success(
           'Verifique seu e-mail para obter instruções de redefinição',
         )
-        router.push('/auth')
+        router.push('/signin')
       })
       .catch((error) => {
         setIsLoading(false)

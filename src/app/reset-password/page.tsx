@@ -56,7 +56,7 @@ export default function ResetPasswordPage() {
       .post('/reset-password', data)
       .then(() => {
         setIsLoading(false)
-        router.push('/auth')
+        router.push('/signin')
         toast.success('Sua senha foi alterada, faça login para continuar')
       })
       .catch((error) => {

@@ -33,7 +33,7 @@ export default function Signup() {
       .post('/signup', data)
       .then(() => {
         setIsLoading(false)
-        router.push('/auth')
+        router.push('/signin')
       })
       .catch((error) => {
         setIsLoading(false)
@@ -97,7 +97,7 @@ export default function Signup() {
           </div>
         )}
 
-        <Link href="/auth" className="text-gray-300 underline">
+        <Link href="/signin" className="text-gray-300 underline">
           Login
         </Link>
       </form>
