@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { ReactNode } from 'react'
 import Image from 'next/image'
@@ -8,7 +7,7 @@ import { Profile } from '../components/Profile'
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const token = cookies().has('token')
-  if (!token) redirect('/auth')
+  if (!token) redirect('/signin')
 
   return (
     <>
@@ -18,9 +17,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <Image src={Logo} alt="logo" />
             <div className="flex gap-3">
               <Profile />
-              <Link href="/logout" className="text-gray-500 underline">
+              <a href="/api/auth/logout" className="text-gray-500 underline">
                 Sair
-              </Link>
+              </a>
             </div>
           </div>
         </header>
