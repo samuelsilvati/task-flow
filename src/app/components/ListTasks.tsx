@@ -39,10 +39,9 @@ export default function ListTask() {
       })
   }, [token])
 
-  if (!tasksData)
-    return (
-      <div>Nao existem tarefas ainda clique no botao acima para adicionar</div>
-    )
+  if (tasksData && tasksData.length === 0) {
+    return <div>Não existem tarefas! Clique no botão acima para adicionar</div>
+  }
 
   if (isLoading) return <Loading />
   return (
