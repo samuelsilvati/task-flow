@@ -3,7 +3,7 @@ import { api } from '@/lib/api'
 import { Pencil } from 'lucide-react'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import toast from '../components/Toast'
 import Loading from './Loading'
 
@@ -48,6 +48,35 @@ export default function ListTask() {
   return (
     <div className="grid grid-cols-1 gap-4 text-yellow-900 md:grid-cols-2 lg:grid-cols-3">
       {tasksData.map((task) => {
+        const handleChangeCheckbox = async (
+          e: React.ChangeEvent<HTMLInputElement>,
+        ) => {
+          const isChecked = e.target.checked
+          try {
+            await api.put(
+              `/task/${task.id}`,
+              { isChecked },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              },
+            )
+
+            const updatedTasksData = tasksData.map((t) => {
+              if (t.id === task.id) {
+                return {
+                  ...t,
+                  isChecked,
+                }
+              }
+              return t
+            })
+            setTasksData(updatedTasksData)
+          } catch (error) {
+            toast.error(`${'Não foi possível marcar sua tarefa'}`)
+          }
+        }
         return (
           <div
             key={task.id}
@@ -68,7 +97,8 @@ export default function ListTask() {
               <input
                 type="checkbox"
                 className="border-3 h-8 w-8 cursor-pointer rounded-lg border-amber-400 bg-amber-100 checked:bg-green-500 hover:bg-amber-400"
-                defaultChecked={task.isPending}
+                checked={task.isChecked}
+                onChange={handleChangeCheckbox}
               />
             </div>
             <div className="flex h-full flex-col items-center justify-center">
