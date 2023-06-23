@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import Loading from '../components/Loaging'
+import Loading from '../components/Loading'
 import { api } from '@/lib/api'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'

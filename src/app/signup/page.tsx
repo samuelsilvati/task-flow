@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
-import Loading from '../components/Loaging'
+import Loading from '../components/Loading'
 import toast from '../components/Toast'
 
 const createUserformSchema = z.object({

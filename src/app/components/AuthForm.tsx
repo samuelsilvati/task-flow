@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-import Loading from './Loaging'
+import Loading from './Loading'
 import toast from './Toast'
 import axios from 'axios'
 
