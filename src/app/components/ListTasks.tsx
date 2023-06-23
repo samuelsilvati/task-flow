@@ -14,7 +14,7 @@ interface task {
   createdAt: string
   updatedAt: string
   categoryId: string
-  isPending: boolean
+  isChecked: boolean
 }
 
 export default function ListTask() {
@@ -82,7 +82,7 @@ export default function ListTask() {
             key={task.id}
             draggable
             className={`${
-              task.isPending
+              task.isChecked
                 ? 'group relative h-64 w-64 rounded-md bg-yellow-300/50 p-4 text-yellow-950 shadow-md hover:scale-105'
                 : 'group relative h-64 w-64 rounded-md bg-yellow-300 p-4 shadow-md hover:scale-105'
             } `}
@@ -102,11 +102,7 @@ export default function ListTask() {
               />
             </div>
             <div className="flex h-full flex-col items-center justify-center">
-              {/* <p>{task.name}</p>
-                  <p>{task.createdAt}</p>
-                  <p>{task.updatedAt}</p>
-                  <p>{task.categoryId}</p> */}
-              <p className={`${task.isPending ? 'line-through' : ''}`}>
+              <p className={`${task.isChecked ? 'line-through' : ''}`}>
                 {task.description}
               </p>
             </div>
