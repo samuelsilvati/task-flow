@@ -10,6 +10,7 @@ import toast from '@/app/components/Toast'
 import Loading from '@/app/components/Loading'
 import Cookie from 'js-cookie'
 import Button from '@/app/components/Button'
+import { Trash, X } from 'lucide-react'
 
 interface MemoryDataProps {
   categoryId: string
@@ -17,7 +18,7 @@ interface MemoryDataProps {
   description: string
 }
 
-const createUserformSchema = z.object({
+const editTaskformSchema = z.object({
   name: z.string().nonempty('Campo obrigatório').default('asdfdsa'),
   description: z.string().nonempty(),
   categoryId: z
@@ -26,7 +27,7 @@ const createUserformSchema = z.object({
     .transform((value) => parseInt(value, 10)),
 })
 
-type CreateUserFormData = z.infer<typeof createUserformSchema>
+type EditTaskFormData = z.infer<typeof editTaskformSchema>
 
 export default function EditTask() {
   const [tasksData, setTasksData] = useState<MemoryDataProps | null>(null)
@@ -37,11 +38,11 @@ export default function EditTask() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateUserFormData>({
-    resolver: zodResolver(createUserformSchema),
+  } = useForm<EditTaskFormData>({
+    resolver: zodResolver(editTaskformSchema),
   })
   const token = Cookie.get('token')
-  function createUser(data: any) {
+  function editTask(data: any) {
     setIsLoading(true)
     api
       .put(`/task/${id}`, data, {
@@ -94,54 +95,54 @@ export default function EditTask() {
   if (!tasksData) return <Loading />
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <h1 className="pb-2 text-xl">Sign Up</h1>
+    <div className="relative h-64 w-64 rounded-md bg-yellow-300 p-4 shadow-md hover:scale-105">
       <form
-        onSubmit={handleSubmit(createUser)}
-        className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm"
+        onSubmit={handleSubmit(editTask)}
+        className="flex h-full flex-col justify-between gap-5 text-gray-800"
       >
-        <div>
-          <input
-            type="text"
-            placeholder="Nome"
-            className="relative block w-full placeholder-gray-300"
-            {...register('name')}
-            defaultValue={tasksData?.name}
-          />
-          {errors.name && (
-            <span className="absolute text-sm text-red-300">
-              {errors.name.message}
-            </span>
-          )}
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="description"
-            className="relative block w-full placeholder-gray-300"
-            {...register('description')}
-            defaultValue={tasksData?.description}
-          />
-          {errors.name && (
-            <span className="absolute text-sm text-red-300">
-              {errors.name.message}
-            </span>
-          )}
-        </div>
-        <>
-          <input
-            type="number"
-            placeholder="categoryId"
-            className="invisible relative hidden w-full placeholder-gray-300"
-            {...register('categoryId')}
-            defaultValue={tasksData?.categoryId}
-          />
-          {errors.categoryId && (
-            <span className="absolute text-sm text-red-300">
-              {errors.categoryId.message}
-            </span>
-          )}
-        </>
+        <div className="mt-5">
+          <div>
+            <input
+              type="text"
+              placeholder="Nome"
+              className="relative block w-full border-none bg-transparent placeholder-gray-300"
+              {...register('name')}
+              defaultValue={tasksData?.name}
+            />
+            {errors.name && (
+              <span className="absolute text-sm text-red-300">
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="description"
+              className="relative block w-full border-none bg-transparent placeholder-gray-300"
+              {...register('description')}
+              defaultValue={tasksData?.description}
+            />
+            {errors.name && (
+              <span className="absolute text-sm text-red-300">
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+          <>
+            <input
+              type="number"
+              placeholder="categoryId"
+              className="invisible relative hidden w-full placeholder-gray-300"
+              {...register('categoryId')}
+              defaultValue={tasksData?.categoryId}
+            />
+            {errors.categoryId && (
+              <span className="absolute text-sm text-red-300">
+                {errors.categoryId.message}
+              </span>
+            )}
+          </>
         </div>
 
         <button
@@ -156,8 +157,11 @@ export default function EditTask() {
           Save
         </Button>
 
-        <Link href="/dashboard" className="text-black underline">
-          Voltar
+        <Link
+          href="/dashboard"
+          className="underlinea absolute left-0 -ml-1 -mt-6 rounded-full bg-red-300 p-2 text-black hover:bg-red-400"
+        >
+          <X />
         </Link>
       </form>
     </div>
