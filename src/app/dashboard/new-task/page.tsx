@@ -7,10 +7,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import toast from '@/app/components/Toast'
-import Loading from '@/app/components/Loading'
 import Cookie from 'js-cookie'
+import Button from '@/app/components/Button'
+import { X } from 'lucide-react'
 
-const createUserformSchema = z.object({
+const createTaskformSchema = z.object({
   name: z.string().nonempty('Campo obrigatório'),
   description: z.string().nonempty(),
   categoryId: z
@@ -19,7 +20,7 @@ const createUserformSchema = z.object({
     .transform((value) => parseInt(value, 10)),
 })
 
-type CreateUserFormData = z.infer<typeof createUserformSchema>
+type CreateTaskFormData = z.infer<typeof createTaskformSchema>
 
 export default function NewTask() {
   const [isLoading, setIsLoading] = useState(false)
@@ -28,11 +29,11 @@ export default function NewTask() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateUserFormData>({
-    resolver: zodResolver(createUserformSchema),
+  } = useForm<CreateTaskFormData>({
+    resolver: zodResolver(createTaskformSchema),
   })
   const token = Cookie.get('token')
-  function createUser(data: any) {
+  function createTask(data: any) {
     console.log(data)
     setIsLoading(true)
     api
@@ -51,67 +52,62 @@ export default function NewTask() {
       })
   }
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <h1 className="pb-2 text-xl">Sign Up</h1>
+    <div className="relative h-64 w-64 rounded-md border bg-yellow-300 p-4 shadow-md hover:scale-105">
       <form
-        onSubmit={handleSubmit(createUser)}
+        onSubmit={handleSubmit(createTask)}
         className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm"
       >
-        <div>
-          <input
-            type="text"
-            placeholder="Nome"
-            className="relative block w-full placeholder-gray-300"
-            {...register('name')}
-          />
-          {errors.name && (
-            <span className="absolute text-sm text-red-300">
-              {errors.name.message}
-            </span>
-          )}
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="description"
-            className="relative block w-full placeholder-gray-300"
-            {...register('description')}
-          />
-          {errors.name && (
-            <span className="absolute text-sm text-red-300">
-              {errors.name.message}
-            </span>
-          )}
-        </div>
-        <div>
-          <input
-            type="number"
-            placeholder="categoryId"
-            className="relative block w-full placeholder-gray-300"
-            {...register('categoryId')}
-          />
-          {errors.categoryId && (
+        <div className="mt-5">
+          <div>
+            <input
+              type="text"
+              placeholder="Nome"
+              className="relative block w-full border-none bg-transparent placeholder-gray-300"
+              {...register('name')}
+            />
+            {errors.name && (
+              <span className="absolute text-sm text-red-300">
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="description"
+              className="relative block w-full border-none bg-transparent placeholder-gray-300"
+              {...register('description')}
+            />
+            {errors.name && (
+              <span className="absolute text-sm text-red-300">
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+          <>
+            <input
+              type="number"
+              placeholder="categoryId"
+              className="invisible relative w-full placeholder-gray-300"
+              {...register('categoryId')}
+            />
+            {/* {errors.categoryId && (
             <span className="absolute text-sm text-red-300">
               {errors.categoryId.message}
             </span>
-          )}
+          )} */}
+          </>
         </div>
 
-        {!isLoading ? (
-          <button
-            type="submit"
-            className="right-4 rounded bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
-          >
-            Create
-          </button>
-        ) : (
-          <div className="h-10 border text-center text-gray-100">
-            <Loading />
-          </div>
-        )}
+        <Button type="submit" loading={isLoading}>
+          Save
+        </Button>
 
-        <Link href="/dashboard" className="text-black underline">
-          Voltar
+        <Link
+          href="/dashboard"
+          className="absolute left-0 -ml-1 -mt-6 rounded-full bg-red-300 p-2 text-black hover:bg-red-400"
+        >
+          <X />
         </Link>
       </form>
     </div>
