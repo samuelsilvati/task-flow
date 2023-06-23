@@ -12,11 +12,14 @@ import Button from '@/app/components/Button'
 import { X } from 'lucide-react'
 
 const createTaskformSchema = z.object({
-  name: z.string().nonempty('Campo obrigatório'),
-  description: z.string().nonempty(),
+  name: z.string().nonempty().default('noname'),
+  description: z.string().nonempty('Campo obrigatório'),
+  isChecked: z.boolean().default(false),
+
   categoryId: z
     .string()
     .min(1, 'Campo obrigatório')
+    .default('1')
     .transform((value) => parseInt(value, 10)),
 })
 
@@ -34,7 +37,6 @@ export default function NewTask() {
   })
   const token = Cookie.get('token')
   function createTask(data: any) {
-    console.log(data)
     setIsLoading(true)
     api
       .post('/new-task', data, {
@@ -55,22 +57,10 @@ export default function NewTask() {
     <div className="relative h-64 w-64 rounded-md border bg-yellow-300 p-4 shadow-md hover:scale-105">
       <form
         onSubmit={handleSubmit(createTask)}
-        className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm"
+        className="flex h-full flex-col justify-between gap-5 text-gray-800 md:max-w-sm"
       >
+        <div></div>
         <div className="mt-5">
-          <div>
-            <input
-              type="text"
-              placeholder="Nome"
-              className="relative block w-full border-none bg-transparent placeholder-gray-300"
-              {...register('name')}
-            />
-            {errors.name && (
-              <span className="absolute text-sm text-red-300">
-                {errors.name.message}
-              </span>
-            )}
-          </div>
           <div>
             <input
               type="text"
@@ -78,29 +68,16 @@ export default function NewTask() {
               className="relative block w-full border-none bg-transparent placeholder-gray-300"
               {...register('description')}
             />
-            {errors.name && (
+            {errors.description && (
               <span className="absolute text-sm text-red-300">
-                {errors.name.message}
+                {errors.description.message}
               </span>
             )}
           </div>
-          <>
-            <input
-              type="number"
-              placeholder="categoryId"
-              className="invisible relative w-full placeholder-gray-300"
-              {...register('categoryId')}
-            />
-            {/* {errors.categoryId && (
-            <span className="absolute text-sm text-red-300">
-              {errors.categoryId.message}
-            </span>
-          )} */}
-          </>
         </div>
 
         <Button type="submit" loading={isLoading}>
-          Save
+          Save task
         </Button>
 
         <Link

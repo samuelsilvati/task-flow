@@ -19,11 +19,12 @@ interface MemoryDataProps {
 }
 
 const editTaskformSchema = z.object({
-  name: z.string().nonempty('Campo obrigatório').default('asdfdsa'),
+  name: z.string().nonempty('Campo obrigatório').default('noname'),
   description: z.string().nonempty(),
   categoryId: z
     .string()
     .min(1, 'Campo obrigatório')
+    .default('1')
     .transform((value) => parseInt(value, 10)),
 })
 
@@ -100,21 +101,8 @@ export default function EditTask() {
         onSubmit={handleSubmit(editTask)}
         className="flex h-full flex-col justify-between gap-5 text-gray-800"
       >
+        <div></div>
         <div className="mt-5">
-          <div>
-            <input
-              type="text"
-              placeholder="Nome"
-              className="relative block w-full border-none bg-transparent placeholder-gray-300"
-              {...register('name')}
-              defaultValue={tasksData?.name}
-            />
-            {errors.name && (
-              <span className="absolute text-sm text-red-300">
-                {errors.name.message}
-              </span>
-            )}
-          </div>
           <div>
             <input
               type="text"
@@ -129,20 +117,6 @@ export default function EditTask() {
               </span>
             )}
           </div>
-          <>
-            <input
-              type="number"
-              placeholder="categoryId"
-              className="invisible relative hidden w-full placeholder-gray-300"
-              {...register('categoryId')}
-              defaultValue={tasksData?.categoryId}
-            />
-            {errors.categoryId && (
-              <span className="absolute text-sm text-red-300">
-                {errors.categoryId.message}
-              </span>
-            )}
-          </>
         </div>
 
         <button
