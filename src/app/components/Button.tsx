@@ -15,7 +15,7 @@ const Button: FC<Loading> = ({ loading, ...props }) => {
     <button
       {...props}
       disabled={loading}
-      className="h-12 rounded-lg bg-yellow-500 text-lg text-black transition-colors hover:bg-yellow-400"
+      className="h-12 w-full rounded-lg bg-yellow-500 text-lg text-black transition-colors hover:bg-yellow-400"
     >
       {loading ? <Loading /> : props.children}
     </button>
