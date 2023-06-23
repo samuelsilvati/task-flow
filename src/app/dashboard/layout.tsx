@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div>
-        <header className="flex items-center justify-center bg-slate-400">
+        <header className="absolute z-10 flex w-screen items-center justify-center bg-slate-400">
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
             <Image src={Logo} alt="logo" />
             <div className="flex gap-3">
@@ -39,8 +39,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           </div>
         </header>
         <main>
-          <div className="flex h-full w-full flex-col items-center ">
-            <div className="relative mt-4 flex w-full max-w-7xl flex-grow flex-col items-center justify-between bg-gray-200 p-4 text-lg">
+          <div className="flex h-full w-full flex-col items-center">
+            <div className="flex h-screen w-full max-w-7xl flex-grow flex-col items-center justify-between overflow-auto pt-32 text-lg">
               {children}
             </div>
           </div>
