@@ -73,6 +73,24 @@ export default function EditTask() {
       })
   }, [id, token])
 
+  function deleteTask() {
+    setIsLoading(true)
+    api
+      .delete(`/task/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        router.push('/dashboard')
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsLoading(false)
+        toast.error(`${error.response.data.message}`)
+      })
+  }
+
   if (!tasksData) return <Loading />
 
   return (
@@ -124,6 +142,16 @@ export default function EditTask() {
             </span>
           )}
         </>
+        </div>
+
+        <button
+          type="button"
+          className="underlinea absolute right-0 -mr-1 -mt-6 rounded-full bg-red-400 p-2 text-black hover:bg-red-500"
+          onClick={deleteTask}
+        >
+          <Trash />
+        </button>
+
         <Button type="submit" loading={isLoading}>
           Save
         </Button>
