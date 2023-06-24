@@ -54,7 +54,7 @@ export default function NewTask() {
       })
   }
   return (
-    <div className="relative h-64 w-64 rounded-md border bg-yellow-300 p-4 shadow-md hover:scale-105">
+    <div className="relative mt-16 h-64 w-64 rounded-md border bg-yellow-300 p-4 shadow-md hover:scale-105">
       <form
         onSubmit={handleSubmit(createTask)}
         className="flex h-full flex-col justify-between gap-5 text-gray-800 md:max-w-sm"

@@ -13,12 +13,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div>
-        <header className="absolute z-10 flex w-screen items-center justify-center border-b border-gray-500 bg-gray-700">
+        <header className="flex w-full items-center justify-center border-b border-gray-500 bg-gray-700">
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
             <Image src={Logo} alt="logo" />
             <div className="flex gap-3">
               <div className="hidden gap-3 pr-2 md:flex">
-                <Link href="/" className="text-white">
+                <Link href="/dashboard/advanced" className="text-white">
                   Modo Avançado
                 </Link>
                 <Link href="/" className="text-white">
@@ -32,13 +32,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </header>
-        <main>
-          <div className="flex h-full w-full flex-col items-center">
-            <div className="flex h-screen w-full max-w-7xl flex-grow flex-col items-center justify-between overflow-auto pt-32 text-lg">
-              {children}
-            </div>
+        <div className="flex h-full w-full flex-col items-center">
+          <div className="flex w-full flex-grow flex-col items-center justify-between overflow-auto">
+            {children}
           </div>
-        </main>
+        </div>
       </div>
     </>
   )

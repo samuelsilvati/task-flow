@@ -96,7 +96,7 @@ export default function EditTask() {
   if (!tasksData) return <Loading />
 
   return (
-    <div className="relative h-64 w-64 rounded-md bg-yellow-300 p-4 shadow-md hover:scale-105">
+    <div className="relative mt-16 h-64 w-64 rounded-md bg-yellow-300 p-4 shadow-md hover:scale-105">
       <form
         onSubmit={handleSubmit(editTask)}
         className="flex h-full flex-col justify-between gap-5 text-gray-800"
