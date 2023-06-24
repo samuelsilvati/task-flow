@@ -1,6 +1,5 @@
 'use client'
 import { api } from '@/lib/api'
-import { Pencil } from 'lucide-react'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -45,7 +44,7 @@ export default function ListTask() {
 
   if (isLoading) return <Loading />
   return (
-    <div className="grid grid-cols-1 gap-4 text-yellow-900 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {tasksData.map((task) => {
         const handleChangeCheckbox = async (
           e: React.ChangeEvent<HTMLInputElement>,
@@ -82,17 +81,11 @@ export default function ListTask() {
             draggable
             className={`${
               task.isChecked
-                ? 'group relative h-64 w-64 rounded-md bg-yellow-300/50 p-4 text-yellow-950 shadow-md hover:scale-105'
-                : 'group relative h-64 w-64 rounded-md bg-yellow-300 p-4 shadow-md hover:scale-105'
+                ? 'relative h-16 w-80 rounded-md bg-yellow-300/50 p-4 text-yellow-950 shadow-lg hover:scale-105'
+                : 'relative h-16 w-80 rounded-md bg-yellow-300 p-4 text-yellow-900 shadow-lg hover:scale-105'
             } `}
           >
-            <Link
-              href={`/dashboard/task/${task.id}`}
-              className="absolute right-0 -mr-1 -mt-6 hidden rounded-full bg-gray-50 p-2 text-black transition-opacity hover:bg-gray-100 group-hover:block"
-            >
-              <Pencil />
-            </Link>
-            <div className="absolute rounded-full">
+            <div className="absolute top-1/2 my-auto -translate-y-1/2 transform rounded-full">
               <input
                 type="checkbox"
                 className="border-3 h-8 w-8 cursor-pointer rounded-lg border-amber-400 bg-amber-100 checked:bg-green-500 hover:bg-amber-400"
@@ -100,11 +93,13 @@ export default function ListTask() {
                 onChange={handleChangeCheckbox}
               />
             </div>
-            <div className="flex h-full flex-col items-center justify-center">
-              <p className={`${task.isChecked ? 'line-through' : ''}`}>
-                {task.description}
-              </p>
-            </div>
+            <Link href={`/dashboard/task/${task.id}`}>
+              <div className="flex h-full flex-col items-center justify-center">
+                <p className={`${task.isChecked ? 'line-through' : ''}`}>
+                  {task.description}
+                </p>
+              </div>
+            </Link>
           </div>
         )
       })}
