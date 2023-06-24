@@ -13,26 +13,20 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div>
-        <header className="absolute z-10 flex w-screen items-center justify-center bg-slate-400">
+        <header className="absolute z-10 flex w-screen items-center justify-center border-b border-gray-500 bg-gray-700">
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
             <Image src={Logo} alt="logo" />
             <div className="flex gap-3">
-              <div className="flex gap-3 pr-4">
-                <Link href="/" className="text-black">
+              <div className="hidden gap-3 pr-2 md:flex">
+                <Link href="/" className="text-white">
+                  Modo Avançado
+                </Link>
+                <Link href="/" className="text-white">
                   Perfil
-                </Link>
-                <Link href="/" className="text-black">
-                  Categorias
-                </Link>
-                <Link href="/" className="text-black">
-                  Categorias
-                </Link>
-                <Link href="/" className="text-black">
-                  Categorias
                 </Link>
               </div>
               <Profile />
-              <a href="/api/auth/logout" className="text-gray-500 underline">
+              <a href="/api/auth/logout" className="text-gray-50 underline">
                 Sair
               </a>
             </div>

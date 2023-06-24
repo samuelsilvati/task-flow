@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
       <body
-        className={`${roboto.variable} bg-gray-900 font-sans text-gray-100`}
+        className={`${roboto.variable} bg-gray-700 font-sans text-gray-100`}
       >
         <main className="flex h-screen flex-col">{children}</main>
       </body>
