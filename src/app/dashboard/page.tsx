@@ -1,4 +1,4 @@
-import ListTask from '../components/ListTasks'
+import ListTask from '../components/Dashboard/ListTasks'
 
 export default function Dashboard() {
   return (

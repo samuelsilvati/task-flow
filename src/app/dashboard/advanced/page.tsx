@@ -1,4 +1,4 @@
-import AdvancedTasks from '@/app/components/AdvancedTasks'
+import AdvancedTasks from '@/app/components/Dashboard/AdvancedTasks'
 
 export default function Advanced() {
   return (

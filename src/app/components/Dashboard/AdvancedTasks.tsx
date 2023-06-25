@@ -3,9 +3,10 @@ import { api } from '@/lib/api'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import toast from '../components/Toast'
-import Loading from './Loading'
+
 import { ChevronDown, PencilIcon } from 'lucide-react'
+import toast from '../Toast'
+import Loading from '../Loading'
 
 interface task {
   id: number
