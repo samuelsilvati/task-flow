@@ -12,7 +12,7 @@ import Button from '@/app/components/Button'
 import { ChevronLeft } from 'lucide-react'
 
 const createTaskformSchema = z.object({
-  name: z.string().nonempty('Campo obrigatório').default('noname'),
+  name: z.string().nonempty('Campo obrigatório'),
   description: z.string().nonempty('Campo obrigatório'),
   isChecked: z.boolean().default(false),
   createdAt: z
