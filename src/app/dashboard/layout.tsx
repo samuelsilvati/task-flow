@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <div>
+      <div className="overflow-hidden">
         <header className="flex w-full items-center justify-center border-b border-gray-500 bg-gray-700">
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
             <Image src={Logo} alt="logo" />
@@ -32,8 +32,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </header>
-        <div className="flex h-full w-full flex-col items-center">
-          <div className="flex w-full flex-grow flex-col items-center justify-between overflow-auto">
+        <div className="mb-12 flex h-[93%] w-full flex-col items-center overflow-auto">
+          <div className="flex w-full flex-grow flex-col items-center justify-between">
             {children}
           </div>
         </div>

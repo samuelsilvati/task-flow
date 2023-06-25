@@ -4,8 +4,8 @@ import { ReactNode } from 'react'
 export default function AdvancedLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full">
-      <aside className="flex h-screen w-72 border-r border-gray-500">
-        <div className="flex flex-col gap-3 p-6">
+      <aside className="hidden w-72 2xl:flex">
+        <div className="fixed flex h-screen w-72 flex-col gap-3 border-r border-gray-500 p-6">
           <Link href="/dashboard/advanced" className="font-bold text-white">
             Perfil
           </Link>

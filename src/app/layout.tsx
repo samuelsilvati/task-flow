@@ -15,9 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${roboto.variable} bg-gray-700 font-sans text-gray-100`}
       >
-        <main className="flex h-screen flex-col overflow-hidden">
-          {children}
-        </main>
+        <main className="flex h-screen flex-col">{children}</main>
       </body>
     </html>
   )
