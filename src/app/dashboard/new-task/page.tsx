@@ -15,6 +15,8 @@ const createTaskformSchema = z.object({
   name: z.string().nonempty().default('noname'),
   description: z.string().nonempty('Campo obrigatório'),
   isChecked: z.boolean().default(false),
+  createdAt: z.date().default(() => new Date()),
+  updatedAt: z.date().default(() => new Date()),
 
   categoryId: z
     .string()
@@ -59,7 +61,6 @@ export default function NewTask() {
         onSubmit={handleSubmit(createTask)}
         className="flex h-full flex-col justify-between gap-5 text-gray-800 md:max-w-sm"
       >
-        <div></div>
         <div className="mt-5">
           <div>
             <input
