@@ -66,10 +66,10 @@ export default function AdvancedTasks() {
       >
         Adicionar Tarefa
       </Link>
-      <div className="mt-4 w-full overflow-auto rounded bg-gray-700/50 px-2 pb-4 shadow-lg">
+      <div className="mt-4 w-full overflow-auto rounded bg-gray-50 px-2 pb-4 shadow dark:bg-gray-700/50">
         <table className="flex flex-grow flex-col">
           <thead className="text-lg">
-            <tr className="border-b border-gray-500">
+            <tr className="border-b border-gray-100/60 dark:border-gray-500">
               <th className="w-12 px-1 py-4 text-center">Cod.</th>
               <th className="w-96 px-3 text-left">Task</th>
               <th className="hidden w-40 px-1 py-4 text-center lg:table-cell">
@@ -120,8 +120,8 @@ export default function AdvancedTasks() {
                 <tr
                   className={`${
                     task.isChecked
-                      ? 'relative cursor-pointer border-b border-gray-500 bg-gray-700 text-gray-400 line-through hover:bg-gray-600/50'
-                      : 'relative cursor-pointer border-b border-gray-500 hover:bg-gray-600/50'
+                      ? 'relative cursor-pointer border-b border-gray-200/50 bg-gray-100/50 text-gray-400 line-through hover:bg-gray-200/60 dark:border-gray-500 dark:bg-gray-800/50 dark:hover:bg-gray-600/50'
+                      : 'relative cursor-pointer border-b border-gray-100/60 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   <td className="w-12 px-1 text-center">{task.id}</td>

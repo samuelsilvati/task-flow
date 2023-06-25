@@ -3,10 +3,10 @@ import { redirect } from 'next/navigation'
 import { ReactNode } from 'react'
 import Image from 'next/image'
 import Logo from '../../assets/logo.svg'
-import LogoDark from '../../assets/logo-dark.svg'
 
 import { Profile } from '../components/Profile'
-import Link from 'next/link'
+// import Link from 'next/link'
+import HeaderMenu from '../components/HeaderMenu'
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const token = cookies().has('token')
@@ -15,20 +15,20 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div className="overflow-hidden">
-        <header className="flex w-full items-center justify-center border-b border-gray-50 dark:border-gray-500 dark:bg-gray-700">
+        <header className="flex w-full items-center justify-center border-b border-gray-100 dark:border-gray-500 dark:bg-gray-700">
           <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
-            <Image src={LogoDark} alt="logo" className="dark:hidden" />
             <Image src={Logo} alt="logo" />
 
             <div className="flex gap-3">
-              <div className="hidden gap-3 pr-2 md:flex">
+              <HeaderMenu />
+              {/* <div className="hidden gap-3 pr-2 md:flex">
                 <Link href="/dashboard/advanced" className="dark:text-white">
                   Modo Avançado
                 </Link>
                 <Link href="/" className="dark:text-white">
                   Perfil
                 </Link>
-              </div>
+              </div> */}
               <Profile />
               <a
                 href="/api/auth/logout"
