@@ -3,11 +3,10 @@ import { api } from '@/lib/api'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
 import { ChevronDown, PencilIcon } from 'lucide-react'
 import toast from '../Toast'
 import Loading from '../Loading'
-
+import dayjs from 'dayjs'
 interface task {
   id: number
   name: string
@@ -62,7 +61,7 @@ export default function AdvancedTasks() {
   return (
     <>
       <Link
-        href="/dashboard/new-task"
+        href="/dashboard/advanced/new-task"
         className="right-4 self-start rounded-md bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
       >
         Adicionar Tarefa
@@ -122,8 +121,8 @@ export default function AdvancedTasks() {
                 <tr
                   className={`${
                     task.isChecked
-                      ? 'relative cursor-pointer border-b border-gray-500 bg-gray-700 text-gray-400 line-through hover:bg-gray-700/80'
-                      : 'relative cursor-pointer border-b border-gray-500 hover:bg-gray-700/80'
+                      ? 'relative cursor-pointer border-b border-gray-500 bg-gray-700 text-gray-400 line-through hover:bg-gray-600/50'
+                      : 'relative cursor-pointer border-b border-gray-500 hover:bg-gray-600/50'
                   }`}
                 >
                   <td className="w-10 py-3 text-center">
@@ -138,10 +137,10 @@ export default function AdvancedTasks() {
                     {task.categoryId}
                   </td>
                   <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                    {task.createdAt}
+                    {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
                   </td>
                   <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                    {task.updatedAt}
+                    {dayjs(task.updatedAt).format('D[/]MM[/]YYYY')}
                   </td>
                   <td className="w-36 px-1 py-4 text-center">
                     <input
