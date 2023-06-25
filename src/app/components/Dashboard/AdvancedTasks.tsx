@@ -3,7 +3,7 @@ import { api } from '@/lib/api'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { ChevronDown, PencilIcon } from 'lucide-react'
+import { PencilIcon } from 'lucide-react'
 import toast from '../Toast'
 import Loading from '../Loading'
 import dayjs from 'dayjs'
@@ -70,7 +70,6 @@ export default function AdvancedTasks() {
         <table className="flex flex-grow flex-col">
           <thead className="text-lg">
             <tr className="border-b border-gray-500">
-              <th className="w-10 px-1 py-4 text-center"></th>
               <th className="w-12 px-1 py-4 text-center">Cod.</th>
               <th className="w-96 px-3 text-left">Task</th>
               <th className="hidden w-40 px-1 py-4 text-center lg:table-cell">
@@ -125,12 +124,6 @@ export default function AdvancedTasks() {
                       : 'relative cursor-pointer border-b border-gray-500 hover:bg-gray-600/50'
                   }`}
                 >
-                  <td className="w-10 py-3 text-center">
-                    <button className="mt-2">
-                      <ChevronDown />
-                    </button>
-                  </td>
-
                   <td className="w-12 px-1 text-center">{task.id}</td>
                   <td className=" w-96 px-3 text-left">{task.description}</td>
                   <td className="hidden w-40 px-1 py-4 text-center lg:table-cell">
@@ -151,7 +144,7 @@ export default function AdvancedTasks() {
                     />
                   </td>
                   <td>
-                    <a href="#">
+                    <a href={`/dashboard/advanced/task/${task.id}`}>
                       <div className="rounded-full bg-blue-500 p-2 text-white transition-colors hover:bg-blue-400">
                         <PencilIcon />
                       </div>
