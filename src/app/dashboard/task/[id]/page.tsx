@@ -12,7 +12,7 @@ import Cookie from 'js-cookie'
 import Button from '@/app/components/Button'
 import { Trash, X } from 'lucide-react'
 
-interface MemoryDataProps {
+interface TaskDataProps {
   categoryId: string
   name: string
   description: string
@@ -33,7 +33,7 @@ const editTaskformSchema = z.object({
 type EditTaskFormData = z.infer<typeof editTaskformSchema>
 
 export default function EditTask() {
-  const [tasksData, setTasksData] = useState<MemoryDataProps | null>(null)
+  const [tasksData, setTasksData] = useState<TaskDataProps | null>(null)
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
