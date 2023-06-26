@@ -62,7 +62,7 @@ export default function NewTask() {
       })
   }
   return (
-    <div className="mt-16 h-max w-80 rounded px-2 py-4 shadow dark:bg-gray-700/50 2xl:w-96">
+    <div className="mt-16 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-600/50 2xl:w-96">
       <Link
         href="/dashboard/advanced"
         className="my-2 flex w-20 rounded-lg text-black hover:text-gray-200 dark:text-gray-100"
@@ -78,7 +78,7 @@ export default function NewTask() {
             <input
               type="text"
               placeholder="Name"
-              className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+              className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('name')}
             />
             {errors.name && (
@@ -93,7 +93,7 @@ export default function NewTask() {
             <input
               type="text"
               placeholder="Description"
-              className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+              className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('description')}
             />
             {errors.description && (
@@ -105,10 +105,10 @@ export default function NewTask() {
         </div>
         <div className="flex flex-col justify-between pb-7 2xl:flex-row">
           <div className="mt-5">
-            <div className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500">
+            <div className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500">
               <input
                 type="date"
-                className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                 {...register('createdAt')}
               />
               {errors.createdAt && (
@@ -122,7 +122,7 @@ export default function NewTask() {
             <div>
               <input
                 type="date"
-                className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                 {...register('updatedAt')}
               />
               {errors.updatedAt && (

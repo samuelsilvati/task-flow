@@ -47,12 +47,12 @@ export default function AdvancedTasks() {
       <>
         <Link
           href="/dashboard/new-task"
-          className="right-4 self-start rounded bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
+          className="self-start rounded bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
         >
           Adicionar Tarefa
         </Link>
         <p className="pt-3">
-          Não existem tarefas! Clique no botão acima para adicionar
+          Clique no botão acima para adicionar sua primeira tarefa
         </p>
       </>
     )
@@ -62,13 +62,13 @@ export default function AdvancedTasks() {
     <>
       <Link
         href="/dashboard/advanced/new-task"
-        className="right-4 self-start rounded-md bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
+        className="self-start rounded-md bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
       >
         Adicionar Tarefa
       </Link>
-      <div className="mt-4 w-full overflow-auto rounded bg-gray-50 px-2 pb-4 shadow dark:bg-gray-700/50">
+      <div className="mt-4 w-full overflow-auto rounded bg-white pb-4 shadow dark:bg-gray-600/50">
         <table className="flex flex-grow flex-col">
-          <thead className="text-lg">
+          <thead className="text-md">
             <tr className="border-b border-gray-100/60 dark:border-gray-500">
               <th className="w-14 px-1 py-4 text-center">Cod.</th>
               <th className="hidden w-40 px-1 py-4 text-left lg:table-cell">
@@ -82,7 +82,7 @@ export default function AdvancedTasks() {
                 Final date
               </th>
               <th className="w-36 px-1  py-4 text-center">Status</th>
-              <th className="w-10 px-1  py-4 text-center"></th>
+              <th className="w-12 text-center"></th>
             </tr>
           </thead>
           {tasksData.map((task) => {
@@ -120,8 +120,8 @@ export default function AdvancedTasks() {
                 <tr
                   className={`${
                     task.isChecked
-                      ? 'relative cursor-pointer border-b border-gray-200/50 bg-gray-100/50 text-gray-400 line-through hover:bg-gray-200/60 dark:border-gray-500 dark:bg-gray-800/50 dark:hover:bg-gray-600/50'
-                      : 'relative cursor-pointer border-b border-gray-100/60 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
+                      ? 'relative cursor-pointer border-b border-gray-200/50 bg-gray-50 text-gray-400 line-through hover:bg-gray-100/50 dark:border-gray-500 dark:bg-gray-800/50 dark:hover:bg-gray-600/50'
+                      : 'relative cursor-pointer border-b border-gray-50 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   <td className="w-14 px-1 text-center">{task.id}</td>
@@ -145,7 +145,7 @@ export default function AdvancedTasks() {
                   </td>
                   <td>
                     <a href={`/dashboard/advanced/task/${task.id}`}>
-                      <div className="rounded-full bg-blue-500 p-2 text-white transition-colors hover:bg-blue-400">
+                      <div className="mr-2 rounded-full bg-blue-500 p-2 text-white transition-colors hover:bg-blue-400">
                         <PencilIcon />
                       </div>
                     </a>

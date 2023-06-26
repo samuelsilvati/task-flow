@@ -109,7 +109,7 @@ export default function EditTask() {
   if (!tasksData) return <Loading />
 
   return (
-    <div className="mt-16 h-max w-80 rounded px-2 py-4 shadow dark:bg-gray-700/50 2xl:w-96">
+    <div className="mt-16 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-700/50 2xl:w-96">
       <div className="flex justify-between">
         <Link
           href="/dashboard/advanced"
@@ -134,7 +134,7 @@ export default function EditTask() {
             <input
               type="text"
               placeholder="Name"
-              className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+              className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('name')}
               defaultValue={tasksData?.name}
             />
@@ -150,7 +150,7 @@ export default function EditTask() {
             <input
               type="text"
               placeholder="Description"
-              className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+              className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('description')}
               defaultValue={tasksData?.description}
             />
@@ -163,10 +163,10 @@ export default function EditTask() {
         </div>
         <div className="flex flex-col justify-between pb-7 2xl:flex-row">
           <div className="mt-5">
-            <div className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500">
+            <div className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500">
               <input
                 type="date"
-                className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                 {...register('createdAt')}
                 defaultValue={dayjs(tasksData.updatedAt).format(
                   'YYYY[-]MM[-]DD',
@@ -183,7 +183,7 @@ export default function EditTask() {
             <div>
               <input
                 type="date"
-                className="relative block w-full rounded-md border-none placeholder-gray-300 dark:bg-gray-500"
+                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                 {...register('updatedAt')}
                 defaultValue={dayjs(tasksData.updatedAt).format(
                   'YYYY[-]MM[-]DD',
