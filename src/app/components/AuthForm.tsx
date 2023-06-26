@@ -33,7 +33,7 @@ export default function AuthForm() {
       .post('/api/auth', data)
       .then(() => {
         setIsLoading(false)
-        router.push('/dashboard')
+        router.push(`${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/dashboard`)
       })
       .catch((error) => {
         if (error) {
