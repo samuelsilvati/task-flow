@@ -1,5 +1,5 @@
 'use client'
-import { X } from 'lucide-react'
+import { MoreVertical, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -17,86 +17,7 @@ export default function MobileMenu() {
         aria-label="menu"
       >
         {!menuOpen ? (
-          <svg
-            width="7"
-            height="29"
-            viewBox="0 0 7 29"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <ellipse
-              cx="3.00684"
-              cy="3.02574"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 3.02574)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="3.02574"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 3.02574)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="3.02574"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 3.02574)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="25.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 25.0257)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="25.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 25.0257)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="25.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 25.0257)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="14.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 14.0257)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="14.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 14.0257)"
-              fill="white"
-            />
-            <ellipse
-              cx="3.00684"
-              cy="14.0257"
-              rx="2.99049"
-              ry="3.00951"
-              transform="rotate(-0.311968 3.00684 14.0257)"
-              fill="white"
-            />
-          </svg>
+          <MoreVertical size={40} className="-m-5" />
         ) : (
           <X size={40} className="-m-5" />
         )}
@@ -113,7 +34,6 @@ export default function MobileMenu() {
             className={`relative mx-auto flex h-max w-full max-w-7xl flex-grow flex-col  items-end justify-end gap-3  py-6 pr-4 font-bold transition-all duration-300 ease-in-out ${
               menuOpen ? 'top-0' : '-top-[100%]'
             }`}
-            // Evita o fechamento do menu ao clicar na div
             onClick={(e) => {
               e.stopPropagation()
             }}
