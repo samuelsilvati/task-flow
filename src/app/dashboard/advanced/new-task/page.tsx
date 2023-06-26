@@ -67,7 +67,7 @@ export default function NewTask() {
         href="/dashboard/advanced"
         className="my-2 flex w-20 rounded-lg text-black hover:text-gray-200 dark:text-gray-100"
       >
-        <ChevronLeft /> Back
+        <ChevronLeft /> Voltar
       </Link>
       <form
         onSubmit={handleSubmit(createTask)}
@@ -77,7 +77,7 @@ export default function NewTask() {
           <div>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Nome"
               className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('name')}
             />
@@ -92,7 +92,7 @@ export default function NewTask() {
           <div>
             <input
               type="text"
-              placeholder="Description"
+              placeholder="Sua tarefa..."
               className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('description')}
             />
@@ -135,7 +135,7 @@ export default function NewTask() {
         </div>
 
         <Button type="submit" loading={isLoading}>
-          Save task
+          Salvar
         </Button>
       </form>
     </div>

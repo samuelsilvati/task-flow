@@ -14,20 +14,19 @@ export default function AdvancedLayout({ children }: { children: ReactNode }) {
             <User2 />
             Perfil
           </Link>
-
           <Link
             href="/dashboard/advanced"
             className="flex items-center gap-2 font-bold dark:text-white"
           >
             <ClipboardList />
-            Tasks
+            Tarefas
           </Link>
           <Link
             href="/dashboard"
             className="flex items-center gap-2 font-bold dark:text-white"
           >
             <AlignJustify />
-            Simple Mode
+            Modo Simples
           </Link>
         </div>
       </aside>

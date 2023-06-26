@@ -72,14 +72,14 @@ export default function AdvancedTasks() {
             <tr className="border-b border-gray-100/60 dark:border-gray-500">
               <th className="w-14 px-1 py-4 text-center">Cod.</th>
               <th className="hidden w-40 px-1 py-4 text-left lg:table-cell">
-                Name
+                Nome
               </th>
-              <th className="w-96 px-3 text-left">Task</th>
+              <th className="w-96 px-3 text-left">Tarefa</th>
               <th className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                Inital date
+                Data Inicial
               </th>
               <th className="hidden w-28  px-1 py-4 text-center lg:table-cell">
-                Final date
+                Data Final
               </th>
               <th className="w-36 px-1  py-4 text-center">Status</th>
               <th className="w-12 text-center"></th>

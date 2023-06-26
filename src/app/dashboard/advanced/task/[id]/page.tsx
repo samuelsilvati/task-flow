@@ -115,7 +115,7 @@ export default function EditTask() {
           href="/dashboard/advanced"
           className="my-2 flex w-20 rounded-lg text-black hover:text-gray-200 dark:text-gray-100"
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Voltar
         </Link>
         <button
           type="button"
@@ -133,7 +133,7 @@ export default function EditTask() {
           <div>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Nome"
               className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('name')}
               defaultValue={tasksData?.name}
@@ -149,7 +149,7 @@ export default function EditTask() {
           <div>
             <input
               type="text"
-              placeholder="Description"
+              placeholder="Sua tarefa..."
               className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('description')}
               defaultValue={tasksData?.description}
@@ -199,7 +199,7 @@ export default function EditTask() {
         </div>
 
         <Button type="submit" loading={isLoading}>
-          Save task
+          Salvar
         </Button>
       </form>
     </div>

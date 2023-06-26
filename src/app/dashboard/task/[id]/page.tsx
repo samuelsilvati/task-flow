@@ -20,7 +20,7 @@ interface MemoryDataProps {
 
 const editTaskformSchema = z.object({
   name: z.string().nonempty('Campo obrigatório').default('noname'),
-  description: z.string().nonempty(),
+  description: z.string().nonempty('Campo obrigatório'),
   createdAt: z.date().default(() => new Date()),
   updatedAt: z.date().default(() => new Date()),
   categoryId: z
@@ -108,14 +108,14 @@ export default function EditTask() {
           <div>
             <input
               type="text"
-              placeholder="description"
+              placeholder="Sua tarefa..."
               className="relative block w-full border-none bg-transparent placeholder-gray-300"
               {...register('description')}
               defaultValue={tasksData?.description}
             />
-            {errors.name && (
+            {errors.description && (
               <span className="absolute text-sm text-red-300">
-                {errors.name.message}
+                {errors.description.message}
               </span>
             )}
           </div>
@@ -130,7 +130,7 @@ export default function EditTask() {
         </button>
 
         <Button type="submit" loading={isLoading}>
-          Save
+          Salvar
         </Button>
 
         <Link
