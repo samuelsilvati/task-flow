@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Loading from './Loading'
 import toast from './Toast'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const createUserformSchema = z.object({
   email: z.string().nonempty('E-mail obrigatório').email('E-mail inválido'),
@@ -17,6 +18,7 @@ type CreateUserFormData = z.infer<typeof createUserformSchema>
 
 export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const {
     register,
@@ -31,7 +33,7 @@ export default function AuthForm() {
       .post('/api/auth', data)
       .then(() => {
         setIsLoading(false)
-        window.location.href = '/dashboard'
+        router.push('/dashboard')
       })
       .catch((error) => {
         if (error) {
