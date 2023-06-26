@@ -41,7 +41,7 @@ export default function Signup() {
       })
   }
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-screen w-full flex-col items-center justify-center">
       <h1 className="pb-2 text-xl">Sign Up</h1>
       <form
         onSubmit={handleSubmit(createUser)}

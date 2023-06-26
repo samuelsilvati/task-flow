@@ -4,7 +4,7 @@ import Logo from '../assets/logo.svg'
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-screen">
       <header className="flex items-center justify-center border-b border-gray-100 bg-gray-50 dark:border-gray-500 dark:bg-gray-700">
         <div className="flex max-w-7xl flex-grow items-center justify-between p-4">
           <Image src={Logo} alt="logo" />
