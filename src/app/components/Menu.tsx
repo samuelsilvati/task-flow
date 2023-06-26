@@ -38,7 +38,7 @@ export default function MobileMenu() {
               e.stopPropagation()
             }}
           >
-            <Link href="/" onClick={toggleMenu}>
+            <Link href="/dashboard/account" onClick={toggleMenu}>
               Perfil
             </Link>
             <Link href="/dashboard" onClick={toggleMenu}>

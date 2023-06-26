@@ -8,7 +8,7 @@ export default function AdvancedLayout({ children }: { children: ReactNode }) {
       <aside className="hidden w-72 2xl:flex">
         <div className="fixed -mt-4 flex h-screen w-72 flex-col gap-3 border-r border-gray-100 p-6 dark:border-gray-500">
           <Link
-            href="/dashboard/advanced"
+            href="/dashboard/account"
             className="flex items-center gap-2 font-bold dark:text-white"
           >
             <User2 />
