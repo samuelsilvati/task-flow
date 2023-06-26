@@ -70,11 +70,11 @@ export default function AdvancedTasks() {
         <table className="flex flex-grow flex-col">
           <thead className="text-lg">
             <tr className="border-b border-gray-100/60 dark:border-gray-500">
-              <th className="w-12 px-1 py-4 text-center">Cod.</th>
-              <th className="w-96 px-3 text-left">Task</th>
-              <th className="hidden w-40 px-1 py-4 text-center lg:table-cell">
-                Category
+              <th className="w-14 px-1 py-4 text-center">Cod.</th>
+              <th className="hidden w-40 px-1 py-4 text-left lg:table-cell">
+                Name
               </th>
+              <th className="w-96 px-3 text-left">Task</th>
               <th className="hidden w-28 px-1 py-4 text-center lg:table-cell">
                 Inital date
               </th>
@@ -124,11 +124,11 @@ export default function AdvancedTasks() {
                       : 'relative cursor-pointer border-b border-gray-100/60 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
                   }`}
                 >
-                  <td className="w-12 px-1 text-center">{task.id}</td>
-                  <td className=" w-96 px-3 text-left">{task.description}</td>
-                  <td className="hidden w-40 px-1 py-4 text-center lg:table-cell">
-                    {task.categoryId}
+                  <td className="w-14 px-1 text-center">{task.id}</td>
+                  <td className="hidden w-40 px-1 py-4 text-left lg:table-cell">
+                    {task.name}
                   </td>
+                  <td className=" w-96 px-3 text-left">{task.description}</td>
                   <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
                     {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
                   </td>
