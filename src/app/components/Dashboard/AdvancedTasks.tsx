@@ -3,7 +3,7 @@ import { api } from '@/lib/api'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { PencilIcon } from 'lucide-react'
+// import { PencilIcon } from 'lucide-react'
 import toast from '../Toast'
 import Loading from '../Loading'
 import dayjs from 'dayjs'
@@ -70,19 +70,18 @@ export default function AdvancedTasks() {
         <table className="flex flex-grow flex-col">
           <thead className="text-md">
             <tr className="border-b border-gray-100/60 dark:border-gray-500">
-              <th className="w-14 px-1 py-4 text-center">Cod.</th>
+              <th className="hidden w-14 px-1 py-4 text-center lg:table-cell">
+                Cod.
+              </th>
               <th className="hidden w-40 px-1 py-4 text-left lg:table-cell">
                 Nome
               </th>
               <th className="w-96 px-3 text-left">Tarefa</th>
-              <th className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                Data Inicial
-              </th>
+              <th className="w-28 px-1 py-4 text-center">Data Inicial</th>
               <th className="hidden w-28  px-1 py-4 text-center lg:table-cell">
                 Data Final
               </th>
-              <th className="w-36 px-1  py-4 text-center">Status</th>
-              <th className="w-12 text-center"></th>
+              <th className="w-20 px-1  py-4 text-center">Status</th>
             </tr>
           </thead>
           {tasksData.map((task) => {
@@ -117,40 +116,42 @@ export default function AdvancedTasks() {
             }
             return (
               <tbody key={task.id}>
-                <tr
-                  className={`${
-                    task.isChecked
-                      ? 'relative cursor-pointer border-b border-gray-200/50 bg-gray-50 text-gray-400 line-through hover:bg-gray-100/50 dark:border-gray-500 dark:bg-gray-800/50 dark:hover:bg-gray-600/50'
-                      : 'relative cursor-pointer border-b border-gray-50 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
-                  }`}
-                >
-                  <td className="w-14 px-1 text-center">{task.id}</td>
-                  <td className="hidden w-40 px-1 py-4 text-left lg:table-cell">
-                    {task.name}
-                  </td>
-                  <td className=" w-96 px-3 text-left">{task.description}</td>
-                  <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                    {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
-                  </td>
-                  <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                    {dayjs(task.updatedAt).format('D[/]MM[/]YYYY')}
-                  </td>
-                  <td className="w-36 px-1 py-4 text-center">
-                    <input
-                      type="checkbox"
-                      className="border-3 h-8 w-8 cursor-pointer rounded-lg border-amber-400 bg-amber-100 checked:bg-green-500 hover:bg-amber-400"
-                      checked={task.isChecked}
-                      onChange={handleChangeCheckbox}
-                    />
-                  </td>
-                  <td>
-                    <a href={`/dashboard/advanced/task/${task.id}`}>
-                      <div className="mr-2 rounded-full bg-blue-500 p-2 text-white transition-colors hover:bg-blue-400">
-                        <PencilIcon />
+                <a href={`/dashboard/advanced/task/${task.id}`}>
+                  <tr
+                    className={`${
+                      task.isChecked
+                        ? 'relative cursor-pointer border-b border-gray-200/50 bg-gray-50 text-gray-400 line-through hover:bg-gray-100/50 dark:border-gray-500 dark:bg-gray-800/50 dark:hover:bg-gray-600/50'
+                        : 'relative cursor-pointer border-b border-gray-50 hover:bg-gray-100/20 dark:border-gray-500 dark:hover:bg-gray-600/50'
+                    }`}
+                  >
+                    <td className="hidden w-14 px-1 text-center lg:table-cell">
+                      {task.id}
+                    </td>
+                    <td className="hidden w-40 px-1 py-4 text-left lg:table-cell">
+                      {task.name}
+                    </td>
+                    <td className=" w-96 px-3 text-left">{task.description}</td>
+                    <td className="w-28 px-1 py-4 text-center">
+                      {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
+                    </td>
+                    <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
+                      {dayjs(task.updatedAt).format('D[/]MM[/]YYYY')}
+                    </td>
+                    <td className="w-20 px-1 py-4 text-center">
+                      <input
+                        type="checkbox"
+                        className="border-3 h-6 w-6 cursor-pointer rounded-lg border-amber-400 bg-amber-100 checked:bg-green-500 hover:bg-amber-400"
+                        checked={task.isChecked}
+                        onChange={handleChangeCheckbox}
+                      />
+                    </td>
+                    {/* <td>
+                      <div className="mr-2 rounded-full bg-blue-500 p-1 text-white transition-colors hover:bg-blue-400">
+                        <PencilIcon size={18} />
                       </div>
-                    </a>
-                  </td>
-                </tr>
+                    </td> */}
+                  </tr>
+                </a>
               </tbody>
             )
           })}
