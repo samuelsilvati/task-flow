@@ -136,8 +136,8 @@ export default function ListTasks() {
                   <p
                     className={`${
                       task.isChecked
-                        ? 'text h-7 truncate px-3 text-left line-through'
-                        : 'h-7 truncate px-3 text-left'
+                        ? 'text truncate px-3 text-left line-through'
+                        : 'truncate px-3 text-left'
                     }`}
                   >
                     {task.description}
