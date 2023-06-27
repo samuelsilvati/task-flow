@@ -105,12 +105,17 @@ export default function NewTask() {
         </div>
         <div className="flex flex-col justify-between pb-7 2xl:flex-row">
           <div className="mt-5">
-            <div className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500">
-              <input
-                type="date"
-                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
-                {...register('createdAt')}
-              />
+            <div>
+              <label htmlFor="createdAt">
+                Data Inicial{' '}
+                <input
+                  type="date"
+                  id="createdAt"
+                  className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
+                  {...register('createdAt')}
+                />
+              </label>
+
               {errors.createdAt && (
                 <span className="absolute text-sm text-red-300">
                   {errors.createdAt.message}
@@ -120,11 +125,15 @@ export default function NewTask() {
           </div>
           <div className="mt-5">
             <div>
-              <input
-                type="date"
-                className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
-                {...register('updatedAt')}
-              />
+              <label htmlFor="updatedAt">
+                Data final
+                <input
+                  type="date"
+                  className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
+                  {...register('updatedAt')}
+                />
+              </label>
+
               {errors.updatedAt && (
                 <span className="absolute text-sm text-red-300">
                   {errors.updatedAt.message}
