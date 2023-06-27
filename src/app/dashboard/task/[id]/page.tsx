@@ -106,10 +106,9 @@ export default function EditTask() {
         <div></div>
         <div className="mt-5">
           <div>
-            <input
-              type="text"
+            <textarea
               placeholder="Sua tarefa..."
-              className="relative block w-full border-none bg-transparent placeholder-gray-300"
+              className="relative block h-32 w-full resize-none border-none bg-transparent placeholder-gray-300"
               {...register('description')}
               defaultValue={tasksData?.description}
             />

@@ -119,11 +119,11 @@ export default function ListTasks() {
               draggable
               className={`${
                 task.isChecked
-                  ? 'relative h-16 w-80 rounded-md bg-yellow-300/50 p-4 text-yellow-950 shadow-lg hover:scale-105'
-                  : 'relative h-16 w-80 rounded-md bg-yellow-300 p-4 text-yellow-900 shadow-lg hover:scale-105'
+                  ? 'flex h-16 w-80 items-center text-ellipsis rounded-md bg-yellow-300/50 p-4 text-yellow-950 shadow-lg hover:scale-105'
+                  : 'flex h-16 w-80 items-center text-ellipsis rounded-md bg-yellow-300 p-4 text-yellow-900 shadow-lg hover:scale-105'
               } `}
             >
-              <div className="absolute top-1/2 my-auto -translate-y-1/2 transform rounded-full">
+              <div className="rounded-full">
                 <input
                   type="checkbox"
                   className="border-3 h-8 w-8 cursor-pointer rounded-lg border-amber-400 bg-amber-100 checked:bg-green-500 hover:bg-amber-400"
@@ -132,8 +132,14 @@ export default function ListTasks() {
                 />
               </div>
               <Link href={`/dashboard/task/${task.id}`}>
-                <div className="flex h-full flex-col items-center justify-center">
-                  <p className={`${task.isChecked ? 'line-through' : ''}`}>
+                <div className="w-64">
+                  <p
+                    className={`${
+                      task.isChecked
+                        ? 'text h-7 truncate px-3 text-left line-through'
+                        : 'h-7 truncate px-3 text-left'
+                    }`}
+                  >
                     {task.description}
                   </p>
                 </div>
