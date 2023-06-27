@@ -130,7 +130,11 @@ export default function AdvancedTasks() {
                     <td className="hidden w-40 px-1 py-4 text-left lg:table-cell">
                       {task.name}
                     </td>
-                    <td className=" w-96 px-3 text-left">{task.description}</td>
+                    <td className=" w-96 px-3 text-left">
+                      <p className="w-44 truncate lg:w-96">
+                        {task.description}
+                      </p>
+                    </td>
                     <td className="w-28 px-1 py-4 text-center">
                       {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
                     </td>

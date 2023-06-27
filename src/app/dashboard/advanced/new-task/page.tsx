@@ -90,10 +90,9 @@ export default function NewTask() {
         </div>
         <div className="mt-5">
           <div>
-            <input
-              type="text"
+            <textarea
               placeholder="Sua tarefa..."
-              className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
+              className="relative block h-24 w-full resize-none rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
               {...register('description')}
             />
             {errors.description && (
