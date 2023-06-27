@@ -141,6 +141,7 @@ export default function Profile() {
         )}
         <div className="flex w-full justify-between">
           <button
+            type="button"
             className="text-gray-300 underline"
             onClick={() => {
               router.back()
@@ -149,6 +150,7 @@ export default function Profile() {
             Voltar
           </button>
           <button
+            type="button"
             className="text-gray-300 underline"
             onClick={() => {
               router.back()
