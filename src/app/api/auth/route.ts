@@ -1,5 +1,5 @@
 import { api } from '@/lib/api'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 
 export async function POST(request: NextRequest) {
   const data = await request.json()
@@ -8,12 +8,8 @@ export async function POST(request: NextRequest) {
     const registerResponse = await api.post('/auth', data)
     const { token } = registerResponse.data
 
-    const redirectURL = new URL(
-      `${process.env.NEXT_PUBLIC_CLIENT_BASE_URL}/dashboard`,
-      request.url,
-    )
-
-    return NextResponse.redirect(redirectURL, {
+    return new Response('Success', {
+      status: 200,
       headers: {
         'Set-Cookie': `token=${token}; Path=/;max-age=${process.env.COOKIE_EXPIRES_IN_SECONDS}`,
       },
