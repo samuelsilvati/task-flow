@@ -5,8 +5,8 @@ import { Outfit } from 'next/font/google'
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-roboto' })
 
 export const metadata = {
-  title: 'Todo',
-  description: 'create a to-do list',
+  title: 'Task Flow',
+  description: 'Acompanhe, priorize e controle suas tarefas de forma eficaz.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
