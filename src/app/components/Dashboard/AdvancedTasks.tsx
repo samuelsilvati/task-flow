@@ -46,7 +46,7 @@ export default function AdvancedTasks() {
     return (
       <>
         <Link
-          href="/dashboard/new-task"
+          href="/dashboard/advanced/new-task"
           className="self-start rounded bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
         >
           Adicionar Tarefa
