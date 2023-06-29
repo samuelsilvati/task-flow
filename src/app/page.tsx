@@ -1,7 +1,7 @@
 // import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../assets/logo.svg'
-import BgDesktop from '../assets/bg-desktop.svg'
+// import BgDesktop from '../assets/bg-desktop.svg'
 import ManImage from '../assets/man.svg'
 
 import Link from 'next/link'
@@ -9,8 +9,8 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="h-screen bg-white ">
-      <div className="grid bg-[url(../assets/bg-mobile.svg)] bg-contain bg-top bg-no-repeat lg:grid-cols-3">
-        <div className="col-span-2 flex h-screen w-full flex-col items-center justify-center lg:bg-white">
+      <div className="grid bg-[url(../assets/bg-mobile.svg)] bg-contain bg-top bg-no-repeat lg:grid-cols-2">
+        <div className="col-span-1 flex h-screen w-full flex-col items-center justify-center lg:bg-white">
           <div className="my-14 flex h-screen w-96 flex-col justify-between gap-6 ">
             <Image
               src={Logo}
@@ -44,9 +44,7 @@ export default function Home() {
             <span className="hidden lg:block" />
           </div>
         </div>
-        <div className="col-span-1 hidden h-screen w-full overflow-hidden lg:block lg:bg-white">
-          <Image src={BgDesktop} alt="logo" className="absolute right-0" />
-        </div>
+        <div className="col-span-1 hidden h-screen w-full overflow-hidden bg-[url(../assets/bg-desktop.svg)] bg-contain bg-right-top bg-no-repeat lg:block lg:bg-white"></div>
       </div>
     </div>
   )
