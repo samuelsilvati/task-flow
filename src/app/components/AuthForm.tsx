@@ -8,6 +8,7 @@ import Loading from './Loading'
 import toast from './Toast'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Button from './Button'
 
 const createUserformSchema = z.object({
   email: z.string().nonempty('E-mail obrigatório').email('E-mail inválido'),
@@ -52,7 +53,7 @@ export default function AuthForm() {
           type="email"
           placeholder="E-mail"
           {...register('email')}
-          className="relative block w-full placeholder-gray-300"
+          className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
         />
         {errors.email && (
           <span className="absolute text-sm text-red-300">
@@ -65,7 +66,7 @@ export default function AuthForm() {
           type="password"
           placeholder="Senha"
           {...register('password')}
-          className="relative block w-full placeholder-gray-300"
+          className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
         />
         {errors.password && (
           <span className="absolute text-sm text-red-300">
@@ -74,21 +75,16 @@ export default function AuthForm() {
         )}
       </div>
 
-      {!isLoading ? (
-        <button type="submit" className="h-10 border text-gray-100">
-          Sign Up
-        </button>
-      ) : (
-        <div className="h-10 border text-center text-gray-100">
-          <Loading />
-        </div>
-      )}
+        <Button loading={isLoading}>
+          Login
+        </Button>
+      
       <div>
-        <Link href="/forgot-password" className="text-gray-300 underline">
+        <Link href="/forgot-password" className=" text-black">
           Esqueci minha senha
         </Link>
 
-        <Link href="/signup" className="float-right text-gray-300 underline">
+        <Link href="/signup" className="float-right text-black">
           Criar conta
         </Link>
       </div>
