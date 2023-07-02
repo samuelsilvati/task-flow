@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Loading from '../components/Loading'
 import decode from 'jwt-decode'
+import Button from './Button'
 
 const createUserformSchema = z
   .object({
@@ -28,7 +29,7 @@ interface Expires {
   exp: number
 }
 
-export default function ResetPasswordPage() {
+export default function ResetPasswordForm() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const pathname = useSearchParams()
@@ -71,9 +72,8 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="w-96 md:max-w-sm">
-        <p className="pb-5">Digite a nova senha abaixo.</p>
+        <p className="pb-5 text-black">Digite a nova senha abaixo.</p>
         <form
           onSubmit={handleSubmit(resetPassword)}
           className="flex w-full flex-col gap-5 text-gray-800"
@@ -83,7 +83,7 @@ export default function ResetPasswordPage() {
               type="password"
               placeholder="Senha"
               {...register('password')}
-              className="relative block w-full"
+              className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
             />
             {errors.password && (
               <span className="absolute text-sm text-red-300">
@@ -96,7 +96,7 @@ export default function ResetPasswordPage() {
               type="password"
               placeholder="Repetir senha"
               {...register('repeatPassword')}
-              className="relative block w-full"
+              className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
             />
             {errors.repeatPassword && (
               <span className="absolute text-sm text-red-300">
@@ -104,17 +104,11 @@ export default function ResetPasswordPage() {
               </span>
             )}
           </div>
-          {!isLoading ? (
-            <button type="submit" className="h-10 border text-gray-100">
-              Reset Password
-            </button>
-          ) : (
-            <div className="h-10 border text-center text-gray-100">
-              <Loading />
-            </div>
-          )}
+           
+           <Button loading={isLoading}>
+            Resetar
+           </Button>
         </form>
       </div>
-    </div>
   )
 }
