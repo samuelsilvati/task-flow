@@ -84,7 +84,7 @@ export default function AuthForm() {
           Esqueci minha senha
         </Link>
 
-        <Link href="/signup" className="float-right text-black">
+        <Link href="/login/signup" className="float-right text-black">
           Criar conta
         </Link>
       </div>
