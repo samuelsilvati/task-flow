@@ -3,8 +3,9 @@ import AuthForm from '../components/AuthForm'
 import { cookies } from 'next/headers'
 import Image from "next/image";
 import Logo from "../../assets/logo.svg";
+import { ReactNode } from 'react'
 
-export default function Auth() {
+export default function Auth({ children }: { children: ReactNode }) {
   const token = cookies().has('token')
   if (token) redirect('/dashboard')
 
@@ -19,7 +20,7 @@ export default function Auth() {
             className="mx-auto px-5 lg:mx-0"
             width={224}
           />
-            <AuthForm />
+            {children}
             <span></span>
           </div>
         </div>
