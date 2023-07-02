@@ -44,7 +44,7 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <div className="w-96 md:max-w-sm">
+    <div className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm">
       <p className="pb-5 text-black">
         Digite o e-mail associado à sua conta e enviaremos instruções de
         redefinição de senha.
