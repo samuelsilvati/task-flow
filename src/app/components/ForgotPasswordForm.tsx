@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import toast from '../components/Toast'
 import { useRouter } from 'next/navigation'
+import Button from './Button'
 
 const createUserformSchema = z.object({
   email: z.string().nonempty('E-mail obrigatório').email('E-mail inválido'),
@@ -15,7 +16,7 @@ const createUserformSchema = z.object({
 
 type CreateUserFormData = z.infer<typeof createUserformSchema>
 
-export default function ForgotPassword() {
+export default function ForgotPasswordForm() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -44,10 +45,8 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
       <div className="w-96 md:max-w-sm">
-        <h1 className="pb-2 text-xl">Forgot My Password</h1>
-        <p className="pb-5">
+        <p className="pb-5 text-black">
           Digite o e-mail associado à sua conta e enviaremos instruções de
           redefinição de senha.
         </p>
@@ -60,7 +59,7 @@ export default function ForgotPassword() {
               type="email"
               placeholder="E-mail"
               {...register('email')}
-              className="relative block w-full placeholder-gray-300"
+              className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
             />
             {errors.email && (
               <span className="absolute text-sm text-red-300">
@@ -69,21 +68,14 @@ export default function ForgotPassword() {
             )}
           </div>
 
-          {!isLoading ? (
-            <button type="submit" className="h-10 border text-gray-100">
-              Submit
-            </button>
-          ) : (
-            <div className="h-10 border text-center text-gray-100">
-              <Loading />
-            </div>
-          )}
+          <Button loading={isLoading}>
+            Enviar
+          </Button>     
 
-          <Link href="/signin" className="text-gray-300 underline">
+          <Link href="/login" className="text-black text-center">
             Login
           </Link>
         </form>
       </div>
-    </div>
   )
 }
