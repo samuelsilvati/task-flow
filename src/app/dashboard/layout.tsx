@@ -7,7 +7,7 @@ import Menu from '../components/Menu'
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const token = cookies().has('token')
-  if (!token) redirect('/signin')
+  if (!token) redirect('/login')
 
   return (
     <>

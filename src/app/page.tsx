@@ -36,7 +36,7 @@ export default function Home() {
               </Link>
               <div className="mt-3 text-black">
                 Já tem Conta?{' '}
-                <Link href="/signin" className="font-bold">
+                <Link href="/login" className="font-bold">
                   Faça Login
                 </Link>
               </div>

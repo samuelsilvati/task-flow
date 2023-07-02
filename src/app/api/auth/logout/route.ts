@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const rediretURL = new URL('/signin', request.url)
+  const rediretURL = new URL('/login', request.url)
 
   return NextResponse.redirect(rediretURL, {
     headers: {

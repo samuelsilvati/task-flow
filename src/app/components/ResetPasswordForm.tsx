@@ -6,7 +6,6 @@ import { z } from 'zod'
 import toast from '../components/Toast'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Loading from '../components/Loading'
 import decode from 'jwt-decode'
 import Button from './Button'
 
@@ -57,7 +56,7 @@ export default function ResetPasswordForm() {
       .post('/reset-password', data)
       .then(() => {
         setIsLoading(false)
-        router.push('/signin')
+        router.push('/login')
         toast.success('Sua senha foi alterada, faça login para continuar')
       })
       .catch((error) => {
@@ -72,43 +71,41 @@ export default function ResetPasswordForm() {
   }
 
   return (
-      <div className="w-96 md:max-w-sm">
-        <p className="pb-5 text-black">Digite a nova senha abaixo.</p>
-        <form
-          onSubmit={handleSubmit(resetPassword)}
-          className="flex w-full flex-col gap-5 text-gray-800"
-        >
-          <div>
-            <input
-              type="password"
-              placeholder="Senha"
-              {...register('password')}
-              className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
-            />
-            {errors.password && (
-              <span className="absolute text-sm text-red-300">
-                {errors.password.message}{' '}
-              </span>
-            )}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Repetir senha"
-              {...register('repeatPassword')}
-              className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
-            />
-            {errors.repeatPassword && (
-              <span className="absolute text-sm text-red-300">
-                {errors.repeatPassword.message}{' '}
-              </span>
-            )}
-          </div>
-           
-           <Button loading={isLoading}>
-            Resetar
-           </Button>
-        </form>
-      </div>
+    <div className="w-96 md:max-w-sm">
+      <p className="pb-5 text-black">Digite a nova senha abaixo.</p>
+      <form
+        onSubmit={handleSubmit(resetPassword)}
+        className="flex w-full flex-col gap-5 text-gray-800"
+      >
+        <div>
+          <input
+            type="password"
+            placeholder="Senha"
+            {...register('password')}
+            className="relative block w-full rounded-lg border-gray-300 placeholder-gray-300"
+          />
+          {errors.password && (
+            <span className="absolute text-sm text-red-300">
+              {errors.password.message}{' '}
+            </span>
+          )}
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Repetir senha"
+            {...register('repeatPassword')}
+            className="relative block w-full rounded-lg border-gray-300 placeholder-gray-300"
+          />
+          {errors.repeatPassword && (
+            <span className="absolute text-sm text-red-300">
+              {errors.repeatPassword.message}{' '}
+            </span>
+          )}
+        </div>
+
+        <Button loading={isLoading}>Resetar</Button>
+      </form>
+    </div>
   )
 }

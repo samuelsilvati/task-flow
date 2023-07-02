@@ -4,7 +4,6 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-import Loading from './Loading'
 import toast from './Toast'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
@@ -53,7 +52,7 @@ export default function AuthForm() {
           type="email"
           placeholder="E-mail"
           {...register('email')}
-          className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
+          className="relative block w-full rounded-lg border-gray-300 placeholder-gray-300"
         />
         {errors.email && (
           <span className="absolute text-sm text-red-300">
@@ -66,7 +65,7 @@ export default function AuthForm() {
           type="password"
           placeholder="Senha"
           {...register('password')}
-          className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
+          className="relative block w-full rounded-lg border-gray-300 placeholder-gray-300"
         />
         {errors.password && (
           <span className="absolute text-sm text-red-300">
@@ -75,10 +74,8 @@ export default function AuthForm() {
         )}
       </div>
 
-        <Button loading={isLoading}>
-          Login
-        </Button>
-      
+      <Button loading={isLoading}>Login</Button>
+
       <div>
         <Link href="/forgot-password" className=" text-black">
           Esqueci minha senha
