@@ -1,9 +1,6 @@
-// import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../assets/logo.svg'
-// import BgDesktop from '../assets/bg-desktop.svg'
 import ManImage from '../assets/man.svg'
-
 import Link from 'next/link'
 
 export default function Home() {
@@ -29,7 +26,7 @@ export default function Home() {
                 Comece a organizar suas tarefas hoje mesmo e experimente uma
                 nova forma de produtividade.
               </p>
-              <Link href="/signup">
+              <Link href="login/signup">
                 <div className="flex h-11 w-full items-center justify-center rounded-lg bg-yellow-500 text-lg font-bold text-black transition-colors hover:bg-yellow-400">
                   <p>Vamos Começar</p>
                 </div>

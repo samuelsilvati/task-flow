@@ -77,7 +77,7 @@ export default function AuthForm() {
       <Button loading={isLoading}>Login</Button>
 
       <div>
-        <Link href="/forgot-password" className=" text-black">
+        <Link href="/login/forgot-password" className=" text-black">
           Esqueci minha senha
         </Link>
 
