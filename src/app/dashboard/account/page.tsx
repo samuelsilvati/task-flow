@@ -9,6 +9,7 @@ import Loading from '../../components/Loading'
 import toast from '../../components/Toast'
 import Cookie from 'js-cookie'
 import decode from 'jwt-decode'
+import Button from '@/app/components/Button'
 
 const createUserformSchema = z
   .object({
@@ -83,8 +84,8 @@ export default function Profile() {
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center">
-      <h1 className="pb-2 text-xl">Profile</h1>
-      <p>{userData?.email}</p>
+      <h1 className="pb-2 text-xl">Perfil</h1>
+      <p>Meu e-mail: {userData?.email}</p>
       <form
         onSubmit={handleSubmit(createUser)}
         className="flex w-full max-w-xs flex-col gap-5 pt-3 text-gray-800 md:max-w-sm"
@@ -93,7 +94,7 @@ export default function Profile() {
           <input
             type="text"
             placeholder="Nome"
-            className="relative block w-full placeholder-gray-300"
+            className="relative block w-full rounded-lg placeholder-gray-300"
             {...register('name')}
             defaultValue={name}
           />
@@ -109,7 +110,7 @@ export default function Profile() {
             type="password"
             placeholder="Senha"
             {...register('password')}
-            className="relative block w-full"
+            className="relative block w-full rounded-lg"
           />
           {errors.password && (
             <span className="absolute text-sm text-red-300">
@@ -122,7 +123,7 @@ export default function Profile() {
             type="password"
             placeholder="Repetir senha"
             {...register('repeatPassword')}
-            className="relative block w-full"
+            className="relative block w-full rounded-lg"
           />
           {errors.repeatPassword && (
             <span className="absolute text-sm text-red-300">
@@ -130,19 +131,13 @@ export default function Profile() {
             </span>
           )}
         </div>
-        {!isLoading ? (
-          <button type="submit" className="h-10 border text-gray-100">
-            Save
-          </button>
-        ) : (
-          <div className="h-10 border text-center text-gray-100">
-            <Loading />
-          </div>
-        )}
+        <Button type="submit" loading={isLoading}>
+          Salvar
+        </Button>
         <div className="flex w-full justify-between">
           <button
             type="button"
-            className="text-gray-300 underline"
+            className="text-gray-300"
             onClick={() => {
               router.back()
             }}
@@ -151,7 +146,7 @@ export default function Profile() {
           </button>
           <button
             type="button"
-            className="text-gray-300 underline"
+            className="text-gray-300"
             onClick={() => {
               router.back()
             }}
