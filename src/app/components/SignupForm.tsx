@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import Loading from '../components/Loading'
 import toast from '../components/Toast'
+import Button from './Button'
 
 const createUserformSchema = z.object({
   name: z.string().nonempty('Nome obrigatório'),
@@ -17,7 +18,7 @@ const createUserformSchema = z.object({
 
 type CreateUserFormData = z.infer<typeof createUserformSchema>
 
-export default function Signup() {
+export default function SignupForm() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const {
@@ -41,8 +42,6 @@ export default function Signup() {
       })
   }
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center">
-      <h1 className="pb-2 text-xl">Sign Up</h1>
       <form
         onSubmit={handleSubmit(createUser)}
         className="flex w-full max-w-xs flex-col gap-5 text-gray-800 md:max-w-sm"
@@ -51,7 +50,7 @@ export default function Signup() {
           <input
             type="text"
             placeholder="Nome"
-            className="relative block w-full placeholder-gray-300"
+            className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
             {...register('name')}
           />
           {errors.name && (
@@ -66,7 +65,7 @@ export default function Signup() {
             type="email"
             placeholder="E-mail"
             {...register('email')}
-            className="relative block w-full"
+            className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
           />
           {errors.email && (
             <span className="absolute text-sm text-red-300">
@@ -79,7 +78,7 @@ export default function Signup() {
             type="password"
             placeholder="Senha"
             {...register('password')}
-            className="relative block w-full"
+            className="relative block w-full border-gray-300 rounded-lg placeholder-gray-300"
           />
           {errors.password && (
             <span className="absolute text-sm text-red-300">
@@ -87,20 +86,14 @@ export default function Signup() {
             </span>
           )}
         </div>
-        {!isLoading ? (
-          <button type="submit" className="h-10 border text-gray-100">
-            Sign Up
-          </button>
-        ) : (
-          <div className="h-10 border text-center text-gray-100">
-            <Loading />
-          </div>
-        )}
 
-        <Link href="/signin" className="text-gray-300 underline">
+        <Button loading={isLoading}>
+          Criar
+        </Button>
+
+        <Link href="/login" className="text-black text-center">
           Login
         </Link>
       </form>
-    </div>
   )
 }
