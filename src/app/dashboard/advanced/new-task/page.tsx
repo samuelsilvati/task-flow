@@ -62,7 +62,7 @@ export default function NewTask() {
       })
   }
   return (
-    <div className="mt-16 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-600/50 2xl:w-96">
+    <div className="mt-4 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-600/50 2xl:w-96">
       <Link
         href="/dashboard/advanced"
         className="my-2 flex w-20 rounded-lg text-black hover:text-gray-200 dark:text-gray-100"

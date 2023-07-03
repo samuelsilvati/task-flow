@@ -66,7 +66,7 @@ export default function AdvancedTasks() {
       >
         Adicionar Tarefa
       </Link>
-      <div className="mb-12 mt-4 w-full overflow-auto rounded bg-white pb-4 shadow dark:bg-gray-600/50">
+      <div className="mb-24 mt-4 w-full overflow-auto rounded bg-white pb-4 shadow dark:bg-gray-600/50">
         <table className="flex flex-grow flex-col">
           <thead className="text-md">
             <tr className="border-b border-gray-100/60 dark:border-gray-500">

@@ -30,7 +30,7 @@ export default function AdvancedLayout({ children }: { children: ReactNode }) {
           </Link>
         </div>
       </aside>
-      <div className="mx-auto">{children}</div>
+      <div className="mx-auto h-max">{children}</div>
     </div>
   )
 }

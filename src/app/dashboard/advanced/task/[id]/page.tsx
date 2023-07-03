@@ -109,7 +109,7 @@ export default function EditTask() {
   if (!tasksData) return <Loading />
 
   return (
-    <div className="mt-16 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-700/50 2xl:w-96">
+    <div className="mt-4 h-max w-80 rounded bg-white px-2 py-4 shadow dark:bg-gray-700/50 2xl:w-96">
       <div className="flex justify-between">
         <Link
           href="/dashboard/advanced"
