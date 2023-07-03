@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
@@ -10,6 +11,8 @@ import toast from '../../components/Toast'
 import Cookie from 'js-cookie'
 import decode from 'jwt-decode'
 import Button from '@/app/components/Button'
+import DeleteModal from '@/app/components/DeleteModal'
+import { X } from 'lucide-react'
 
 const createUserformSchema = z
   .object({
@@ -37,6 +40,7 @@ type CreateUserFormData = z.infer<typeof createUserformSchema>
 
 export default function Profile() {
   const [isLoading, setIsLoading] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [userData, setUserData] = useState<UserDataProps | null>(null)
   const router = useRouter()
   const token = Cookie.get('token')
@@ -80,10 +84,40 @@ export default function Profile() {
         toast.error(`${error.response.data.message}`)
       })
   }, [token])
+
+  function deleteHandle() {
+    api
+      .delete('/delete', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        router.push('/api/auth/logout')
+        toast.success('Sua conta foi apagada')
+      })
+      .catch((error) => {
+        toast.error(`${error.response.data.message}`)
+      })
+  }
   if (!userData) return <Loading />
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center">
+    <div className="flex h-screen w-full flex-col items-center pt-4">
+      <DeleteModal
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false)
+        }}
+        buttonAction={() => {
+          deleteHandle()
+        }}
+      >
+        <div className="mx-auto mb-2 w-max rounded-full border-2 border-red-500 p-2 text-red-500">
+          <X />
+        </div>
+        Tem certeza que deseja excluir sua conta?
+      </DeleteModal>
       <h1 className="pb-2 text-xl">Perfil</h1>
       <p>Meu e-mail: {userData?.email}</p>
       <form
@@ -148,7 +182,7 @@ export default function Profile() {
             type="button"
             className="text-gray-300"
             onClick={() => {
-              router.back()
+              setIsOpen(true)
             }}
           >
             Apagar Conta
