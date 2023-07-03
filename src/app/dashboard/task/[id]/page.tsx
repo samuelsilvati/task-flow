@@ -21,8 +21,6 @@ interface TaskDataProps {
 const editTaskformSchema = z.object({
   name: z.string().nonempty('Campo obrigatório').default('noname'),
   description: z.string().nonempty('Campo obrigatório'),
-  createdAt: z.date().default(() => new Date()),
-  updatedAt: z.date().default(() => new Date()),
   categoryId: z
     .string()
     .min(1, 'Campo obrigatório')
