@@ -7,6 +7,10 @@ import React, { useEffect, useState } from 'react'
 import toast from '../Toast'
 import Loading from '../Loading'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+
 interface task {
   id: number
   name: string
@@ -137,10 +141,10 @@ export default function AdvancedTasks() {
                     </a>
                   </td>
                   <td className="w-28 px-1 py-4 text-center">
-                    {dayjs(task.createdAt).format('D[/]MM[/]YYYY')}
+                    {dayjs(task.createdAt).utc().format('DD[/]MM[/]YYYY')}
                   </td>
                   <td className="hidden w-28 px-1 py-4 text-center lg:table-cell">
-                    {dayjs(task.updatedAt).format('D[/]MM[/]YYYY')}
+                    {dayjs(task.updatedAt).utc().format('DD[/]MM[/]YYYY')}
                   </td>
                   <td className="w-20 px-1 py-4 text-center">
                     <input

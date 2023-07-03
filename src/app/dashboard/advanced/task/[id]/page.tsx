@@ -12,6 +12,9 @@ import Cookie from 'js-cookie'
 import Button from '@/app/components/Button'
 import { ChevronLeft, Trash } from 'lucide-react'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
 
 interface MemoryDataProps {
   categoryId: string
@@ -170,9 +173,9 @@ export default function EditTask() {
                   id="createdAt"
                   className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                   {...register('createdAt')}
-                  defaultValue={dayjs(tasksData.createdAt).format(
-                    'YYYY[-]MM[-]DD',
-                  )}
+                  defaultValue={dayjs(tasksData.createdAt)
+                    .utc()
+                    .format('YYYY-MM-DD')}
                 />
               </label>
 
@@ -192,9 +195,9 @@ export default function EditTask() {
                   id="updatedAt"
                   className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                   {...register('updatedAt')}
-                  defaultValue={dayjs(tasksData.updatedAt).format(
-                    'YYYY[-]MM[-]DD',
-                  )}
+                  defaultValue={dayjs(tasksData.updatedAt)
+                    .utc()
+                    .format('YYYY-MM-DD')}
                 />
               </label>
 
