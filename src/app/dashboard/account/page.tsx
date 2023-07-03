@@ -103,7 +103,7 @@ export default function Profile() {
   if (!userData) return <Loading />
 
   return (
-    <div className="flex h-screen w-full flex-col items-center pt-4">
+    <div className="flex h-max w-80 flex-col items-center rounded bg-white p-4 pt-4 shadow dark:bg-gray-600/50 2xl:w-96">
       <DeleteModal
         isOpen={isOpen}
         onClose={() => {
@@ -122,13 +122,13 @@ export default function Profile() {
       <p>Meu e-mail: {userData?.email}</p>
       <form
         onSubmit={handleSubmit(createUser)}
-        className="flex w-full max-w-xs flex-col gap-5 pt-3 text-gray-800 md:max-w-sm"
+        className="flex w-full max-w-xs flex-col gap-5 pt-3  md:max-w-sm"
       >
         <div>
           <input
             type="text"
             placeholder="Nome"
-            className="relative block w-full rounded-lg placeholder-gray-300"
+            className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
             {...register('name')}
             defaultValue={name}
           />
@@ -144,7 +144,7 @@ export default function Profile() {
             type="password"
             placeholder="Senha"
             {...register('password')}
-            className="relative block w-full rounded-lg"
+            className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
           />
           {errors.password && (
             <span className="absolute text-sm text-red-300">
@@ -157,7 +157,7 @@ export default function Profile() {
             type="password"
             placeholder="Repetir senha"
             {...register('repeatPassword')}
-            className="relative block w-full rounded-lg"
+            className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
           />
           {errors.repeatPassword && (
             <span className="absolute text-sm text-red-300">
@@ -171,7 +171,7 @@ export default function Profile() {
         <div className="flex w-full justify-between">
           <button
             type="button"
-            className="text-gray-300"
+            className="hover:text-gray-300"
             onClick={() => {
               router.back()
             }}
@@ -180,7 +180,7 @@ export default function Profile() {
           </button>
           <button
             type="button"
-            className="text-gray-300"
+            className="hover:text-red-400"
             onClick={() => {
               setIsOpen(true)
             }}
