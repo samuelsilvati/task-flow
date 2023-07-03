@@ -37,7 +37,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           </div>
         </div>
       </header>
-      <div className="mb-12 flex w-full flex-col items-center overflow-auto">
+      <div className="scroll flex w-full flex-col items-center overflow-auto">
         <div className="flex h-[94vh] w-full flex-grow flex-col items-center justify-between p-4">
           {children}
         </div>
