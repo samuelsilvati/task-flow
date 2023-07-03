@@ -13,19 +13,11 @@ import Button from '@/app/components/Button'
 import { Trash, X } from 'lucide-react'
 
 interface TaskDataProps {
-  categoryId: string
-  name: string
   description: string
 }
 
 const editTaskformSchema = z.object({
-  name: z.string().nonempty('Campo obrigatório').default('noname'),
   description: z.string().nonempty('Campo obrigatório'),
-  categoryId: z
-    .string()
-    .min(1, 'Campo obrigatório')
-    .default('1')
-    .transform((value) => parseInt(value, 10)),
 })
 
 type EditTaskFormData = z.infer<typeof editTaskformSchema>

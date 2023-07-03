@@ -17,7 +17,6 @@ import utc from 'dayjs/plugin/utc'
 dayjs.extend(utc)
 
 interface MemoryDataProps {
-  categoryId: string
   name: string
   description: string
   createdAt: string
@@ -27,7 +26,6 @@ interface MemoryDataProps {
 const editTaskformSchema = z.object({
   name: z.string().nonempty('Campo obrigatório'),
   description: z.string().nonempty('Campo obrigatório'),
-  isChecked: z.boolean().default(false),
   createdAt: z
     .string()
     .nonempty('Campo obrigatório')
@@ -36,12 +34,6 @@ const editTaskformSchema = z.object({
     .string()
     .nonempty('Campo obrigatório')
     .transform((value) => value.concat('T00:00:00.000Z')),
-
-  categoryId: z
-    .string()
-    .min(1, 'Campo obrigatório')
-    .default('1')
-    .transform((value) => parseInt(value, 10)),
 })
 
 type EditTaskFormData = z.infer<typeof editTaskformSchema>
