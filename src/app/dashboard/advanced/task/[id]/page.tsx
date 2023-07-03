@@ -170,7 +170,7 @@ export default function EditTask() {
                   id="createdAt"
                   className="relative block w-full rounded-md border-none bg-gray-50 placeholder-gray-300 dark:bg-gray-500"
                   {...register('createdAt')}
-                  defaultValue={dayjs(tasksData.updatedAt).format(
+                  defaultValue={dayjs(tasksData.createdAt).format(
                     'YYYY[-]MM[-]DD',
                   )}
                 />
