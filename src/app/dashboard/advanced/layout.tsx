@@ -12,7 +12,7 @@ export default function AdvancedLayout({ children }: { children: ReactNode }) {
             className="flex items-center gap-2 font-bold dark:text-white"
           >
             <User2 />
-            Perfil
+            Conta
           </Link>
           <Link
             href="/dashboard/advanced"

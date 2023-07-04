@@ -39,7 +39,7 @@ export default function MobileMenu() {
             }}
           >
             <Link href="/dashboard/account" onClick={toggleMenu}>
-              Perfil
+              Conta
             </Link>
             <Link href="/dashboard" onClick={toggleMenu}>
               Modo Simples

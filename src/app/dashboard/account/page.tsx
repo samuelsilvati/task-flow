@@ -86,6 +86,7 @@ export default function Profile() {
   }, [token])
 
   function deleteHandle() {
+    setIsLoading(true)
     api
       .delete('/delete', {
         headers: {
@@ -95,8 +96,11 @@ export default function Profile() {
       .then(() => {
         router.push('/api/auth/logout')
         toast.success('Sua conta foi apagada')
+        setIsOpen(false)
+        setIsLoading(false)
       })
       .catch((error) => {
+        setIsLoading(false)
         toast.error(`${error.response.data.message}`)
       })
   }
@@ -112,13 +116,14 @@ export default function Profile() {
         buttonAction={() => {
           deleteHandle()
         }}
+        isLoading={isLoading}
       >
         <div className="mx-auto mb-2 w-max rounded-full border-2 border-red-500 p-2 text-red-500">
           <X />
         </div>
         Tem certeza que deseja excluir sua conta?
       </DeleteModal>
-      <h1 className="pb-2 text-xl">Perfil</h1>
+      <h1 className="pb-2 text-xl">Conta</h1>
       <p>Meu e-mail: {userData?.email}</p>
       <form
         onSubmit={handleSubmit(createUser)}
