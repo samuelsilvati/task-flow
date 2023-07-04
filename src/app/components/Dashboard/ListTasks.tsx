@@ -55,7 +55,7 @@ export default function ListTasks() {
         </p>
         <Link
           href="/dashboard/new-task"
-          className="absolute bottom-6 right-6 z-30 block cursor-none self-start rounded-full bg-green-500 p-4 font-bold text-white transition-colors hover:bg-green-600 lg:hidden"
+          className="absolute bottom-6 right-6 z-30 block cursor-none self-start rounded-full bg-green-500 p-2 font-bold text-white transition-colors hover:bg-green-600 lg:hidden"
         >
           <Plus />
         </Link>
