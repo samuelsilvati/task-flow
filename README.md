@@ -11,6 +11,10 @@ Este é um simples aplicativo web de Lista de Tarefas construído com Next.js. E
   <img alt="rocketpay" src=".github/project02.png" width="100%">
 </div>
 
+## Deploy
+
+https://task-flow-23.netlify.app
+
 ## Recursos
 
 - Cadastre usuários para acesso personalizado.
